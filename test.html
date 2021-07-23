@@ -6,65 +6,53 @@
 </head>
 <body>
 <script>
-    let Battery = function () {
-
-        this.setEnergy = function (energy) {
-            this.energy = energy;
-        };
-
-        this.getEnergy = function () {
-            return this.energy;
-        };
-
-        this.decreaseEnergy = function () {
-            if (this.energy > 0) {
-                this.energy--;
+    class Apple{
+        weight;
+        constructor(weight) {
+            this.weight=weight
+        }
+        setWeight(){
+            if(this.weight>0){
+                return true;
+            }
+            else return false;
+        }
+        decreaseWeight(){
+            if(this.weight>0){
+                this.weight--
             }
         }
-    };
-    let FlashLamp = function () {
-
-        this.setBattery = function (battery) {
-            this.battery = battery;
-        };
-
-        this.getBatteryInfo = function () {
-            return this.battery.getEnergy();
-        };
-
-        this.light = function () {
-            if(this.status){
-                alert("Lighting");
-            } else {
-                alert("Not lighting");
-            }
-        };
-
-        this.turnOn = function () {
-            this.status = true;
-        };
-
-        this.turnOff = function () {
-            this.status = false;
+    }
+    class Human{
+        name;
+        gender;
+        weight;
+        constructor(name,gender,weightHuman) {
+            this.name=name;
+            this.gender=gender;
+            this.weightHuman=weight;
         }
-    };
-    let battery = new Battery();
-    battery.setEnergy(10);
-
-    let flashLamp = new FlashLamp();
-    flashLamp.setBattery(battery);
-
-    document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
-    flashLamp.light();
-
-    document.write("Turn on<br/>")
-    flashLamp.turnOn();
-    flashLamp.light();
-    document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
-
-    document.write("Turn off<br/>")
-    flashLamp.turnOff();
-    flashLamp.light();
+        getWeightHuman()
+        {
+            return weight;
+        }
+        say(){
+            return "tôi là"+this.name+'Giới tính'+ this.gender+'cân nặng'+this.weight
+        }
+        checkApple(apple)
+        {
+            return apple.setWeight();
+        }
+        eatApple(apple){
+            apple.decreaseWeight();
+            this.weight++;
+        }
+    }
+    let apple=new Apple(2)
+    let adam = new Human("Adam", 'Male', 20);
+    let eva = new Human("Eva", 'FetMale', 10);
+    adam.eatApple(apple)
+    document.write(apple.weight)
 </script>
 </body>
 </html>
